@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, map, startWith, switchMap, take } from 'rxjs';
+import {
+  concatMap,
+  interval,
+  map,
+  mergeMap,
+  startWith,
+  switchMap,
+  take,
+} from 'rxjs';
 
 @Component({
   selector: 'app-interval',
@@ -9,7 +17,7 @@ import { interval, map, startWith, switchMap, take } from 'rxjs';
 export class IntervalComponent implements OnInit {
   ngOnInit(): void {
     console.log('use f');
-    this.useInervalSwitchMap();
+    this.useIntervalMergeMap();
   }
 
   private useIntervalMap(): void {
@@ -21,6 +29,33 @@ export class IntervalComponent implements OnInit {
       .pipe(
         take(2),
         switchMap(() => interval(1000).pipe(take(3)))
+      )
+      .subscribe((x) => console.log(x));
+  }
+
+  private useIntervalConcatMap(): void {
+    interval(1000)
+      .pipe(
+        take(2),
+        concatMap(() => interval(100).pipe(take(3)))
+      )
+      .subscribe((x) => console.log(x));
+  }
+
+  private useIntervalIn(): void {
+    interval(1000)
+      .pipe(
+        take(2),
+        map(() => interval(100).pipe(take(3)))
+      )
+      .subscribe((x) => x.subscribe(console.log));
+  }
+
+  private useIntervalMergeMap(): void {
+    interval(1000)
+      .pipe(
+        take(2),
+        mergeMap(() => interval(100).pipe(take(3)))
       )
       .subscribe((x) => console.log(x));
   }

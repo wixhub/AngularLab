@@ -34,6 +34,8 @@ add "airbnb-typescript/base" to "extends" in .eslintrc.json
 add "plugin:import/recommended" to "extends" in .eslintrc.json
 
 add "@typescript-eslint/comma-dangle": "off" to "rules" in .eslintrc.json
+add "import/named": "off" to "rules" in .eslintrc.json
+https://eslint.org/docs/latest/rules/
 
 ng lint
 
