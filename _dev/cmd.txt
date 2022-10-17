@@ -4,8 +4,9 @@ git clone https://github.com/wixhub/angular-lab.git
 
 cd angular-lab
 
-*****
-* 1 *
+
+*************
+* init_v_14 *
 
 git checkout -b init_v_14
 //Switched to a new branch "init_v_14"
@@ -14,6 +15,13 @@ npm install -g @angular/cli  [14.2.6]
 
 ng new angular-lab --directory ./
 //use SCSS as the default stylesheet
+
+
+********
+* lint *
+
+git checkout -b lint
+//Switched to a new branch "lint"
 
 Add airBnB to the project:
 
@@ -28,3 +36,50 @@ add "plugin:import/recommended" to "extends" in .eslintrc.json
 add "@typescript-eslint/comma-dangle": "off" to "rules" in .eslintrc.json
 
 ng lint
+
+
+********
+* rxjs *
+
+git checkout -b rxjs
+//Switched to a new branch "rxjs"
+
+ng g m core
+
+ng g m rxjs
+ng g c rxjs/components/interval
+
+
+*******
+* use *
+
+ng add @angular/material
+ng g m material
+
+ng g c components/header
+ng g c pages/home-page
+ng g s services/data
+ng g g guards/load [CanLoad] | [CanActivate]
+ng g p pipes/filter
+ng g d directives/bottom-border-color
+ng g i models/item --type=model
+ng g e shared/enums/colors --type=enum
+
+***
+deploy:
+
+ng deploy --base-href=./
+
+((( отличие?
+
+https://github.com/angular-schule/angular-cli-ghpages
+
+npm i angular-cli-ghpages --save-dev
+
+//in angular.json set "outputPath": "intro" | "comp-dir-pipe"
+
+ng build --configuration production --base-href "./"
+
+)))
+
+git commit

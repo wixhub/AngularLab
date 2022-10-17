@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { IntervalComponent } from './rxjs/components/interval/interval.component';
 
-//const routes: Routes = [];
+const routes: Routes = [{ path: '', component: IntervalComponent }];
 
 @NgModule({
-  //imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
