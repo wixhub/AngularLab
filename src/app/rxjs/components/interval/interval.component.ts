@@ -17,7 +17,7 @@ import {
 export class IntervalComponent implements OnInit {
   ngOnInit(): void {
     console.log('use f');
-    this.useIntervalMergeMap();
+    this.useInterval100MergeMap();
   }
 
   private useIntervalMap(): void {
@@ -51,11 +51,20 @@ export class IntervalComponent implements OnInit {
       .subscribe((x) => x.subscribe(console.log));
   }
 
-  private useIntervalMergeMap(): void {
+  private useInterval1000MergeMap(): void {
     interval(1000)
       .pipe(
         take(2),
         mergeMap(() => interval(100).pipe(take(3)))
+      )
+      .subscribe((x) => console.log(x));
+  }
+
+  private useInterval100MergeMap(): void {
+    interval(100)
+      .pipe(
+        take(2),
+        mergeMap(() => interval(1000).pipe(take(3)))
       )
       .subscribe((x) => console.log(x));
   }
